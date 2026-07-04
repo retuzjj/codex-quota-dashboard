@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Codex Quota Dashboard</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="titlebar">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>CODEX QUOTA</span>
+        </div>
+        <div class="window-controls">
+          <button id="refresh" class="window-button refresh-button" type="button" title="立即刷新" aria-label="立即刷新">
+            <span aria-hidden="true">↻</span>
+          </button>
+          <button id="minimize" class="window-button" type="button" title="最小化" aria-label="最小化">
+            <span aria-hidden="true">−</span>
+          </button>
+          <button id="close" class="window-button close-button" type="button" title="关闭" aria-label="关闭">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+      </header>
+
+      <section id="notice" class="notice" hidden></section>
+
+      <section class="cards" aria-live="polite">
+        <article class="quota-card">
+          <div class="gauge" id="five-hour-gauge">
+            <div class="gauge-center">
+              <strong id="five-hour-remaining">--</strong>
+              <span>剩余</span>
+            </div>
+          </div>
+          <div class="quota-copy">
+            <p class="quota-label">5 小时额度</p>
+            <p class="quota-used" id="five-hour-used">正在读取…</p>
+            <p class="quota-reset" id="five-hour-reset">--</p>
+          </div>
+        </article>
+
+        <article class="quota-card">
+          <div class="gauge gauge-weekly" id="weekly-gauge">
+            <div class="gauge-center">
+              <strong id="weekly-remaining">--</strong>
+              <span>剩余</span>
+            </div>
+          </div>
+          <div class="quota-copy">
+            <p class="quota-label">7 天额度</p>
+            <p class="quota-used" id="weekly-used">正在读取…</p>
+            <p class="quota-reset" id="weekly-reset">--</p>
+          </div>
+        </article>
+      </section>
+
+      <footer class="footer">
+        <div class="status-row">
+          <span id="status-dot" class="status-dot"></span>
+          <span id="status">正在连接 Codex…</span>
+          <span id="plan" class="plan"></span>
+        </div>
+        <label class="toggle-row">
+          <span>登录后启动</span>
+          <input id="auto-start" type="checkbox" />
+          <span class="toggle" aria-hidden="true"></span>
+        </label>
+      </footer>
+    </main>
+    <script src="./index.js"></script>
+  </body>
+</html>

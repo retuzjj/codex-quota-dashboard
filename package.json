@@ -1,0 +1,91 @@
+{
+  "name": "codex-quota-dashboard",
+  "version": "0.1.0",
+  "description": "Cross-platform desktop dashboard for Codex rate limits",
+  "private": true,
+  "main": "dist/main/main/main.js",
+  "author": "retu",
+  "homepage": "https://github.com/retuzjj/codex-quota-dashboard#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/retuzjj/codex-quota-dashboard.git"
+  },
+  "bugs": {
+    "url": "https://github.com/retuzjj/codex-quota-dashboard/issues"
+  },
+  "keywords": [
+    "codex",
+    "electron",
+    "quota",
+    "dashboard",
+    "rate-limit"
+  ],
+  "desktopName": "codex-quota-dashboard",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "npm run build && electron .",
+    "build": "node scripts/build.mjs",
+    "test": "npm run build && node --test tests/*.test.js",
+    "pack": "npm run build && electron-builder --dir",
+    "dist": "npm run build && electron-builder",
+    "dist:linux": "npm run build && electron-builder --linux AppImage deb",
+    "dist:windows": "npm run build && electron-builder --win nsis",
+    "dist:mac": "npm run build && electron-builder --mac dmg --universal"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.30",
+    "electron": "42.5.0",
+    "electron-builder": "^26.15.3",
+    "esbuild": "^0.25.5",
+    "typescript": "~5.8.3"
+  },
+  "build": {
+    "appId": "com.retu.codexquotadashboard",
+    "productName": "Codex Quota Dashboard",
+    "asar": true,
+    "files": [
+      "dist/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "universal"
+          ]
+        }
+      ],
+      "category": "public.app-category.developer-tools"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "Development",
+      "maintainer": "retu",
+      "syncDesktopName": true
+    }
+  }
+}

@@ -141,3 +141,23 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# Electron build artifacts and installers
+release/
+*.AppImage
+*.deb
+*.dmg
+*.exe
+*.msi
+*.snap
+
+# Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Operating system files
+.DS_Store
+Thumbs.db
+Desktop.ini
